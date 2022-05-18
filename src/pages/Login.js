@@ -30,6 +30,7 @@ class Login extends React.Component {
     const { nameInput } = this.state;
     this.setState({ loading: true });
     await createUser({ name: nameInput });
+    // his.setState({ loading: false, redirect: true });
     history.push('/search');
   }
 
