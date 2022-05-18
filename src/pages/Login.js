@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import propTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import LoadingScreen from './LoadingScreen';
 
@@ -10,7 +10,10 @@ class Login extends React.Component {
     isEnabled: true,
     nameInput: '',
     loading: false,
-    redirect: false,
+  }
+
+  componentWillUnmount() {
+    this.setState({ loading: false });
   }
 
   checkHasName = () => {
@@ -23,17 +26,18 @@ class Login extends React.Component {
   }
 
   doLogin = async () => {
+    const { history } = this.props;
     const { nameInput } = this.state;
     this.setState({ loading: true });
     await createUser({ name: nameInput });
-    this.setState({ loading: false, redirect: true });
+    history.push('/search');
   }
 
   onInputChange = ({ target }) => this.setState({ [target.name]: target.value },
     this.checkHasName());
 
   render() {
-    const { isEnabled, loading, redirect } = this.state;
+    const { isEnabled, loading } = this.state;
     return (
       <div data-testid="page-login">
         <form>
@@ -57,12 +61,18 @@ class Login extends React.Component {
           </button>
           <div>
             { loading && <LoadingScreen /> }
-            { redirect && <Redirect to="/search" /> }
+            {/* { redirect && <Redirect to="/search" /> } */}
           </div>
         </form>
       </div>
     );
   }
 }
+
+Login.propTypes = {
+  history: propTypes.shape({
+    push: propTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default Login;
