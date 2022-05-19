@@ -5,22 +5,37 @@ import getMusics from '../services/musicsAPI';
 
 class Album extends React.Component {
   state = {
-    artistName: '',
+    artist: [],
+    hasName: false,
   }
 
   componentDidMount() {
+    this.getArtist();
+  }
+
+  getArtist = async () => {
     const { match: { params: { id } } } = this.props;
-    getMusics(id).then((music) => console.log(music));
+    const musics = await getMusics(id);
+    this.setState({ artist: musics, hasName: true });
+    // const { artist } = this.state;
+    // console.log(artist[0].artistName);
   }
 
   render() {
-    const { artistName } = this.state;
+    const { artist, hasName } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
-        <h1 data-testid="artist-name">
-          {artistName}
-        </h1>
+        {hasName && (
+          <div>
+            <h1 data-testid="artist-name">
+              {`${artist[0].artistName} `}
+            </h1>
+            <p data-testid="album-name">
+              {`${artist[0].collectionName} `}
+            </p>
+          </div>
+        )}
       </div>
     );
   }
