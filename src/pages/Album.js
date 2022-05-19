@@ -2,11 +2,13 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
+import MusicCard from '../components/MusicCard';
 
 class Album extends React.Component {
   state = {
     artist: [],
     hasName: false,
+    onlyWithSongs: [],
   }
 
   componentDidMount() {
@@ -16,13 +18,14 @@ class Album extends React.Component {
   getArtist = async () => {
     const { match: { params: { id } } } = this.props;
     const musics = await getMusics(id);
-    this.setState({ artist: musics, hasName: true });
+    const songs = musics.filter((artist) => artist.trackName);
+    this.setState({ artist: musics, hasName: true, onlyWithSongs: songs });
     // const { artist } = this.state;
     // console.log(artist[0].artistName);
   }
 
   render() {
-    const { artist, hasName } = this.state;
+    const { artist, hasName, onlyWithSongs } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -34,6 +37,14 @@ class Album extends React.Component {
             <p data-testid="album-name">
               {`${artist[0].collectionName} `}
             </p>
+            {onlyWithSongs.map((dataSong) => (
+              <div key={ dataSong.trackName }>
+                <MusicCard
+                  trackName={ dataSong.trackName }
+                  previewUrl={ dataSong.previewUrl }
+                />
+              </div>
+            ))}
           </div>
         )}
       </div>
