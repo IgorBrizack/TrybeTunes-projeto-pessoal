@@ -72,8 +72,7 @@ class Search extends React.Component {
         <div>
           {hasArtist ? (
             <h1>
-              Resultado de álbuns de:
-              { search }
+              {`Resultado de álbuns de: ${search}`}
             </h1>) : <h1>Nenhum álbum foi encontrado</h1>}
           {hasArtist && artists.map((info) => (
             <div key={ info.artistID }>
