@@ -22,7 +22,7 @@ class Header extends React.Component {
         {loading ? <LoadingScreen /> : <p data-testid="header-user-name">{user}</p>}
         <Link to="/search" data-testid="link-to-search">Search</Link>
         <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
-        <Link to="/profile" data-testid="link-to-profile">Favorites</Link>
+        <Link to="/profile" data-testid="link-to-profile">Profile</Link>
       </div>
     );
   }

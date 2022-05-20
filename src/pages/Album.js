@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   state = {
@@ -20,8 +21,6 @@ class Album extends React.Component {
     const musics = await getMusics(id);
     const songs = musics.filter((artist) => artist.trackName);
     this.setState({ artist: musics, hasName: true, onlyWithSongs: songs });
-    // const { artist } = this.state;
-    // console.log(artist[0].artistName);
   }
 
   render() {
@@ -44,6 +43,7 @@ class Album extends React.Component {
                   previewUrl={ dataSong.previewUrl }
                   trackId={ dataSong.trackId }
                   dataSong={ dataSong }
+                  favoriteSong={ getFavoriteSongs() }
                 />
               </div>
             ))}
