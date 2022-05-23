@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   state = {
@@ -25,6 +24,8 @@ class Album extends React.Component {
 
   render() {
     const { artist, hasName, onlyWithSongs } = this.state;
+
+    console.log(onlyWithSongs);
     return (
       <div data-testid="page-album">
         <Header />
@@ -43,7 +44,6 @@ class Album extends React.Component {
                   previewUrl={ dataSong.previewUrl }
                   trackId={ dataSong.trackId }
                   dataSong={ dataSong }
-                  favoriteSong={ getFavoriteSongs() }
                 />
               </div>
             ))}
