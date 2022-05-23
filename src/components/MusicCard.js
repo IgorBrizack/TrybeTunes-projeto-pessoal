@@ -20,9 +20,6 @@ class MusicCard extends React.Component {
     const favoritList = await getFavoriteSongs();
     const isFavorite = favoritList.some((element) => element.trackId === trackId);
     this.setState({ loading: false, isChecked: isFavorite });
-    // } else {
-    //   this.setState({ loading: false, isChecked: false });
-    // }
   }
 
   removeFromList = async () => {
@@ -38,7 +35,9 @@ class MusicCard extends React.Component {
       this.setState({ isChecked: false });
       this.removeFromList();
       const { favoriteSong } = this.props;
-      favoriteSong();
+      if (favoriteSong) {
+        favoriteSong();
+      }
     } else {
       this.setState({ loading: true });
       const { dataSong } = this.props;

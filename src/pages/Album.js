@@ -24,8 +24,6 @@ class Album extends React.Component {
 
   render() {
     const { artist, hasName, onlyWithSongs } = this.state;
-
-    console.log(onlyWithSongs);
     return (
       <div data-testid="page-album">
         <Header />
