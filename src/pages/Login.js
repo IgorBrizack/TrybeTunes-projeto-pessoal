@@ -10,6 +10,9 @@ class Login extends React.Component {
     isEnabled: true,
     nameInput: '',
     loading: false,
+    emailInput: '',
+    imageInput: '',
+    descricaoInput: '',
   }
 
   componentWillUnmount() {
@@ -27,9 +30,12 @@ class Login extends React.Component {
 
   doLogin = async () => {
     const { history } = this.props;
-    const { nameInput } = this.state;
+    const { nameInput, emailInput, imageInput, descricaoInput } = this.state;
     this.setState({ loading: true });
-    await createUser({ name: nameInput });
+    await createUser({ name: nameInput,
+      email: emailInput,
+      image: imageInput,
+      description: descricaoInput });
     // his.setState({ loading: false, redirect: true });
     history.push('/search');
   }
@@ -50,6 +56,33 @@ class Login extends React.Component {
               id="name-input"
               onChange={ this.onInputChange }
               name="nameInput"
+            />
+          </label>
+          <label htmlFor="emailInput">
+            Email:
+            <input
+              id="emailInput"
+              type="email"
+              name="emailInput"
+              onChange={ this.onInputChange }
+            />
+          </label>
+          <label htmlFor="imageInput">
+            Link Imagem:
+            <input
+              id="imageInput"
+              type="text"
+              name="imageInput"
+              onChange={ this.onInputChange }
+            />
+          </label>
+          <label htmlFor="descriptionInput">
+            Descrição:
+            <input
+              id="descricaoInput"
+              type="text"
+              name="descricaoInput"
+              onChange={ this.onInputChange }
             />
           </label>
           <button
