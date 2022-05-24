@@ -58,33 +58,6 @@ class Login extends React.Component {
               name="nameInput"
             />
           </label>
-          <label htmlFor="emailInput">
-            Email:
-            <input
-              id="emailInput"
-              type="email"
-              name="emailInput"
-              onChange={ this.onInputChange }
-            />
-          </label>
-          <label htmlFor="imageInput">
-            Link Imagem:
-            <input
-              id="imageInput"
-              type="text"
-              name="imageInput"
-              onChange={ this.onInputChange }
-            />
-          </label>
-          <label htmlFor="descriptionInput">
-            Descrição:
-            <input
-              id="descricaoInput"
-              type="text"
-              name="descricaoInput"
-              onChange={ this.onInputChange }
-            />
-          </label>
           <button
             type="button"
             data-testid="login-submit-button"
