@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
-import LoadingScreen from './LoadingScreen';
+// import LoadingScreen from './LoadingScreen';
 
 class Profile extends React.Component {
   state = {
     name: '',
-    loading: false,
+    // loading: true,
     email: '',
     descricao: '',
     imagem: '',
@@ -18,11 +19,11 @@ class Profile extends React.Component {
   }
 
   getUserData = async () => {
-    this.setState({ loading: true });
+    // this.setState({ loading: true });
     const userData = await getUser();
-    // console.log(userData);
+    console.log(userData);
     this.setState({ name: userData.name,
-      loading: false,
+      // loading: false,
       email: userData.email,
       descricao: userData.description,
       imagem: userData.image,
@@ -30,19 +31,23 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { name, loading, email, imagem, descricao } = this.state;
+    const { name, email, imagem, descricao } = this.state;
     return (
       <div data-testid="page-profile">
         <Header />
-        {loading ? <LoadingScreen /> : (
-          <div>
+        {name && (
+          <div className="profile-main-container">
             <h1>{name}</h1>
             <p>{email}</p>
             <img data-testid="profile-image" src={ imagem } alt="profilePic" />
             <p>{descricao}</p>
-            <Link to="/profile/edit">Editar perfil</Link>
+            <div className="profile-link-container">
+              <Link className="profile-link" to="/profile/edit">Editar perfil</Link>
+              <Link className="profile-link" to="/">Sair</Link>
+            </div>
           </div>
         )}
+        <Footer />
       </div>
     );
   }

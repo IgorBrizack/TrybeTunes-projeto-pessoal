@@ -1,8 +1,11 @@
+/* eslint-disable react/jsx-max-depth */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import LoadingScreen from './LoadingScreen';
+import '../bootstrap.min.css';
 
 class Search extends React.Component {
   state = {
@@ -32,7 +35,7 @@ class Search extends React.Component {
   }
 
   onInputChange = ({ target }) => this.setState({ [target.name]: target.value },
-    this.checkSearch());
+    this.checkSearch);
 
   search = () => {
     const { search } = this.state;
@@ -50,47 +53,66 @@ class Search extends React.Component {
         <Header />
         {loading ? <LoadingScreen />
           : (
-            <form>
-              <label htmlFor="search">
-                <input
-                  name="search"
-                  onChange={ this.onInputChange }
-                  id="search"
-                  data-testid="search-artist-input"
-                  type="text"
-                />
-              </label>
-              <button
-                onClick={ this.search }
-                type="button"
-                data-testid="search-artist-button"
-                disabled={ isDisabled }
-              >
-                Pesquisar
-              </button>
-            </form>)}
+            <form className="search-position">
+              <div className="search-inputs-main-container">
+                <div className="search-inputs">
+                  <label htmlFor="search">
+                    <input
+                      className="form-control"
+                      name="search"
+                      onChange={ this.onInputChange }
+                      id="search"
+                      data-testid="search-artist-input"
+                      type="text"
+                    />
+                  </label>
+                </div>
+                <div>
+                  <button
+                    className="btn btn-primary"
+                    onClick={ this.search }
+                    type="button"
+                    data-testid="search-artist-button"
+                    disabled={ isDisabled }
+                  >
+                    Pesquisar
+                  </button>
+                </div>
+              </div>
+            </form>
+          )}
         <div>
-          {hasArtist ? (
-            <h1>
-              {`Resultado de álbuns de: ${search}`}
-            </h1>) : <h1>Nenhum álbum foi encontrado</h1>}
-          {hasArtist && artists.map((info) => (
-            <div key={ info.artistID }>
-              <p>{info.artistName}</p>
-              <p>{info.collectionId}</p>
-              <p>{info.collectionName}</p>
-              <p>{info.collectionPrice}</p>
-              <p>{info.artworkUrl100}</p>
-              <p>{info.releaseDate}</p>
-              <p>{info.trackCount}</p>
-              <Link
-                to={ `/album/${info.collectionId}` }
-                data-testid={ `link-to-album-${info.collectionId}` }
-              >
-                link
-              </Link>
-            </div>))}
+          <div className="searching-text">
+            {hasArtist ? (
+              <h2>
+                {`Resultado de álbuns de: ${search}`}
+              </h2>) : <h2>Nenhum álbum foi encontrado</h2>}
+          </div>
+          <div className="artist-main-container">
+            {hasArtist && artists.map((info) => (
+              <div className="artist-card" key={ info.artistID }>
+                <p>{info.artistName}</p>
+                <p>{info.collectionName}</p>
+                <p>{`$${info.collectionPrice}`}</p>
+                <img
+                  className="album-image"
+                  src={ info.artworkUrl100 }
+                  alt={ info.collectionName }
+                />
+                <p>{`Músicas: ${info.trackCount}`}</p>
+                <div className="card-link-main">
+                  <Link
+                    className="card-link"
+                    to={ `/album/${info.collectionId}` }
+                    data-testid={ `link-to-album-${info.collectionId}` }
+                  >
+                    Ouvir Albúm
+                  </Link>
+                </div>
+              </div>))}
+          </div>
         </div>
+        {!hasArtist && <Footer />}
       </div>
     );
   }

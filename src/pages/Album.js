@@ -28,23 +28,31 @@ class Album extends React.Component {
       <div data-testid="page-album">
         <Header />
         {hasName && (
-          <div>
-            <h1 data-testid="artist-name">
-              {`${artist[0].artistName} `}
-            </h1>
-            <p data-testid="album-name">
-              {`${artist[0].collectionName} `}
-            </p>
-            {onlyWithSongs.map((dataSong) => (
-              <div key={ dataSong.trackName }>
-                <MusicCard
-                  trackName={ dataSong.trackName }
-                  previewUrl={ dataSong.previewUrl }
-                  trackId={ dataSong.trackId }
-                  dataSong={ dataSong }
-                />
-              </div>
-            ))}
+          <div className="album-data-main-container">
+            <div className="album-data-container">
+              <h1 data-testid="artist-name">
+                {artist[0].artistName}
+              </h1>
+              <p data-testid="album-name">
+                {artist[0].collectionName}
+              </p>
+              <img
+                src={ artist[0].artworkUrl100 }
+                alt={ artist[0].collectionName }
+              />
+            </div>
+            <div className="songs-main-container">
+              {onlyWithSongs.map((dataSong) => (
+                <div className="music-card" key={ dataSong.trackName }>
+                  <MusicCard
+                    trackName={ dataSong.trackName }
+                    previewUrl={ dataSong.previewUrl }
+                    trackId={ dataSong.trackId }
+                    dataSong={ dataSong }
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>

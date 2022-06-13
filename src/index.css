@@ -1,19 +1,371 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  background-color: #5A595C;
+  height: 700px;
 }
 
-.loading {
-  align-items: center;
+.main-header-container {
+  background-color: #D6D5DB;
+  text-align: center;
+  height: 80px;
   display: flex;
+  align-items: center;
+  box-shadow: 5px 2px 2px black;
+}
+
+.main-title-container {
+  display: flex;
+  width: 70%;
+  margin: auto;
+}
+
+.main-header-title {
+  font-size: 40px;
+  align-self: flex-start;
+}
+
+.login-main-container {
+  flex-direction: column;
+  margin: 100px auto auto auto;
+  display: flex;
+  border: 1px solid rgb(197, 189, 189);
+  width: 300px;
+  height: 200px;
+  border-radius: 3%;
+  background-color: #D6D5DB;
+}
+
+.login-elements {
+  margin-left: 10px;
+}
+
+.login-button-element {
+  text-align: center;
+  width: 100px;
+  margin: 15px auto;
+}
+
+.label-font {
+  font-size: 18px;
+}
+
+.loading-container {
+  text-align: center;
+  width: 150px;
+  margin: auto;
+}
+
+.loading-image {
+  max-width: 200px;
+  max-height: 70px;
+}
+
+.loading-screen-main {
+  margin: 50px auto auto;
+  height: 50px;
+}
+
+footer {
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
   justify-content: center;
 }
+
+.logo-container {
+  width: 50px;
+  margin: 10px 20px;
+}
+
+.logo-container-text {
+  display: flex;
+  text-align: center;
+  width: 250px;
+  margin: 10px 20px;
+  font-family: Rubik;
+  font-weight: bold;
+}
+
+.logo-container-text p {
+  margin: auto;
+}
+
+.logo-images {
+  margin: auto;
+  max-width: 50px;
+  max-width: 50px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  font-size: 25px;
+  font-family: Rubik;
+}
+
+link:hover {
+  text-decoration: none;
+  color: rgb(71, 68, 68);
+}
+
+.header-links-main-container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.header-links-container {
+  width: 70px;
+  text-align: center;
+}
+
+.header-links-container a {
+  font-size: 18px;
+  font-family: Rubik;
+  color: turquoise;
+}
+
+.user-loged-in-container {
+  background-color: white;
+  width: 200px;
+  height: 30px;
+  border: 1px solid rgb(202, 189, 189);
+  margin-right: 10px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.user-loged-in {
+  font-size: 20px;
+  margin-bottom: 0;
+  /* color: white; */
+}
+
+.search-position {
+  width: 100%;
+  margin: auto;
+}
+
+.search-inputs-main-container {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+
+.search-inputs {
+  margin: 10px;
+}
+
+.searching-text {
+  /* font-family: Rubik; */
+  width: 100%;
+  text-align: center;
+}
+
+.searching-text h2 {
+  color: turquoise;
+  font-family: Rubik;
+}
+
+.artist-main-container {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: #5A595C;
+}
+
+.artist-card {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-bottom: 10px;
+  border: 1px solid rgb(192, 186, 186);
+  border-radius: 3%;
+  background-color: rgb(226, 222, 246);
+}
+
+.artist-card p, img {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.artist-card div {
+  margin: auto auto 10px auto;
+}
+
+.artist-card p {
+  font-family: Rubik;
+}
+
+.album-image {
+  max-width: 180px;
+  max-height: 180px;
+}
+
+.card-link-main {
+  display: flex;
+  width: 150px;
+  background-color: rgb(159, 145, 231);
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.card-link-main:hover {
+  background-color: rgb(114, 100, 182);
+}
+
+.card-link {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+}
+
+.card-link:hover {
+  color: black;
+}
+
+.album-data-main-container {
+  display: flex;
+  background-color: #5A595C;
+}
+
+.album-data-container {
+  text-align: center;
+  color: rgb(46, 44, 44);
+  border: 1px solid rgb(176, 166, 166);
+  height: 350px;
+  width: 18%;
+  position: fixed;
+  margin-left: 5%;
+  background-color: #E4DFF5;
+  box-shadow: 10px 5px 5px black;
+}
+
+.album-data-container img {
+  width: 80%;
+  margin: auto;
+}
+
+.songs-main-container {
+  /* position: relative; */
+  /* border: 1px solid black; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 20%;
+  width: 80%;
+  /* background-color: rgb(142, 119, 175); */
+  /* box-shadow: 10px 5px 5px black; */
+}
+
+.music-card-container {
+  color: white;
+  background-color: rgb(51, 49, 49);
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Rubik;
+  box-shadow: 5px 2px 2px black;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.music-card {
+  padding: 0;
+  margin: 5px;
+  width: 340px;
+  height: 170px;
+  text-align: center;
+}
+
+.favorites-main-title {
+  width: 100%;
+  text-align: center;
+  color: turquoise;
+  font-family: Rubik;
+}
+
+.favorites-main-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 100%;
+  flex-wrap: wrap;
+  background-color: #5A595C;
+}
+
+.profile-main-container {
+  display: flex;
+  border: 1px solid black;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: #D6D5DB;
+  /* justify-content: center; */
+}
+
+.profile-main-container  h1 {
+  margin-top: 10px;
+  font-size: 25px;
+  font-family: Rubik;
+  text-align: center;
+}
+
+.profile-main-container  p {
+  font-family: Rubik;
+  text-align: center;
+}
+
+.profile-main-container img  {
+  border-radius: 100%;
+  width: 200px;
+  margin: auto;
+}
+
+.profile-link-container {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  margin: auto;
+  text-align: center;
+}
+
+.profile-link {
+  font-family: Rubik;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.profile-edit-main-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 360px;
+  border: 1px solid black;
+  background-color: #D6D5DB;
+  margin: auto;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.edit-inputs {
+  margin-top: 10px;
+}
+

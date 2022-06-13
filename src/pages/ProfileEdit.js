@@ -2,7 +2,9 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
-import LoadingScreen from './LoadingScreen';
+// import LoadingScreen from './LoadingScreen';
+import Footer from '../components/Footer';
+import '../bootstrap.min.css';
 
 class ProfileEdit extends React.Component {
   state ={
@@ -11,7 +13,7 @@ class ProfileEdit extends React.Component {
     inputEmail: '',
     inputDescription: '',
     inputImage: '',
-    loading: true,
+    // loading: true,
   }
 
   componentDidMount() {
@@ -33,23 +35,23 @@ class ProfileEdit extends React.Component {
     const { inputName, inputDescription, inputEmail, inputImage } = this.state;
     if (inputName && inputDescription && inputImage) {
       if (inputEmail.includes('@')) {
-        this.setState({ isDisabled: false, loading: false });
+        this.setState({ isDisabled: false });
       } else {
-        this.setState({ isDisabled: true, loading: false });
+        this.setState({ isDisabled: true });
       }
     } else {
-      this.setState({ isDisabled: true, loading: false });
+      this.setState({ isDisabled: true });
     }
   }
 
  updateUsuario = async () => {
-   this.setState({ loading: true });
+   //  this.setState({ loading: true });
    const { inputName, inputImage, inputEmail, inputDescription } = this.state;
    await updateUser({ name: inputName,
      email: inputEmail,
      image: inputImage,
      description: inputDescription });
-   this.setState({ loading: false });
+   //  this.setState({ loading: false });
    const { history } = this.props;
    history.push('/profile');
  }
@@ -62,17 +64,17 @@ class ProfileEdit extends React.Component {
       inputName,
       inputDescription,
       inputEmail,
-      inputImage,
-      loading } = this.state;
+      inputImage } = this.state;
 
     return (
       <div data-testid="page-profile-edit">
         <Header />
-        {loading ? <LoadingScreen /> : (
+        <div className="profile-edit-main-container">
           <form>
-            <label htmlFor="inputName">
+            <label htmlFor="inputName" className="label-font edit-inputs">
               Editar nome:
               <input
+                className="form-control"
                 value={ inputName }
                 type="text"
                 name="inputName"
@@ -81,9 +83,10 @@ class ProfileEdit extends React.Component {
                 onChange={ this.onInputChange }
               />
             </label>
-            <label htmlFor="inputEmail">
+            <label htmlFor="inputEmail" className="label-font edit-inputs">
               Editar email:
               <input
+                className="form-control"
                 value={ inputEmail }
                 type="email"
                 name="inputEmail"
@@ -92,9 +95,10 @@ class ProfileEdit extends React.Component {
                 onChange={ this.onInputChange }
               />
             </label>
-            <label htmlFor="inputDescription">
+            <label htmlFor="inputDescription" className="label-font edit-inputs">
               Editar descrição:
               <input
+                className="form-control"
                 value={ inputDescription }
                 type="text"
                 name="inputDescription"
@@ -103,9 +107,10 @@ class ProfileEdit extends React.Component {
                 onChange={ this.onInputChange }
               />
             </label>
-            <label htmlFor="inputImage">
+            <label htmlFor="inputImage" className="label-font edit-inputs">
               Editar imagem:
               <input
+                className="form-control"
                 value={ inputImage }
                 type="text"
                 name="inputImage"
@@ -115,6 +120,7 @@ class ProfileEdit extends React.Component {
               />
             </label>
             <button
+              className="btn btn-primary edit-inputs"
               data-testid="edit-button-save"
               disabled={ isDisabled }
               type="button"
@@ -123,7 +129,8 @@ class ProfileEdit extends React.Component {
               Salvar
             </button>
           </form>
-        )}
+        </div>
+        <Footer />
       </div>
     );
   }

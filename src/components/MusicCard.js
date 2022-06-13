@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import LoadingScreen from '../pages/LoadingScreen';
 import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import '../bootstrap.min.css';
 
 class MusicCard extends React.Component {
   state ={
@@ -52,7 +53,7 @@ class MusicCard extends React.Component {
     return (
       <div>
         {loading ? <LoadingScreen /> : (
-          <div>
+          <div className="music-card-container">
             <p>{ trackName }</p>
             <audio data-testid="audio-component" src={ previewUrl } controls>
               <track kind="captions" />
@@ -60,17 +61,20 @@ class MusicCard extends React.Component {
               <code>audio</code>
               .
             </audio>
-            <label htmlFor={ trackId }>
-              Favorita
-              <input
-                name={ trackId }
-                checked={ isChecked }
-                id={ trackId }
-                data-testid={ `checkbox-music-${trackId}` }
-                type="checkbox"
-                onChange={ this.addToList }
-              />
-            </label>
+            <div className="form-check">
+              <label className="form-check-label" htmlFor={ trackId }>
+                Favorita
+                <input
+                  className="form-check-input"
+                  name={ trackId }
+                  checked={ isChecked }
+                  id={ trackId }
+                  data-testid={ `checkbox-music-${trackId}` }
+                  type="checkbox"
+                  onChange={ this.addToList }
+                />
+              </label>
+            </div>
           </div>
         )}
       </div>
