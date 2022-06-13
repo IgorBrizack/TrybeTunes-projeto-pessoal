@@ -2,7 +2,7 @@
 
 ## Front-End TrybeTunes Project.
 
-This project was developed by Trybe to make theirs students to create an aplication whith the React.js Framework. Was necessary to do external request from an API, who will return to us some songs preview, login page, perfil page and favorite songs page.
+This project was developed by Trybe to make theirs students to create an aplication whith the React.js Framework. Was necessary to do external request from an API, who will return to us some songs preview. Create login page, perfil page and favorite songs page.
 
 ## Necessary knowledges: 
 
@@ -20,7 +20,7 @@ Doesn't exist a valid username or password, its there only for a simulation, if 
 
 ## Projeto TrybeTunes Front-End.
 
-Este projeto foi desenvolvido pela Trybe para fazer seus alunos criarem uma aplicação com o Framework React.js. Foi necessário fazer uma solicitação externa de uma API, que nos retornará algumas prévias de músicas, página de login, página de perfil e página de músicas favoritas.
+Este projeto foi desenvolvido pela Trybe para fazer seus alunos criarem uma aplicação com o Framework React.js. Foi necessário fazer uma solicitação externa de uma API, que nos retornará algumas prévias de músicas. Criar página de login, página de perfil e página de músicas favoritas.
 
 ## Conhecimentos necessários:
 
