@@ -14,7 +14,7 @@ This project was developed by Trybe to make theirs students to create an aplicat
 
 # Olá ! Seja bem-vindo(a) para saber mais sobre o projeto TrybeTunes.
 
-# Projeto TrybeTunes Front-End.
+## Projeto TrybeTunes Front-End.
 
 Este projeto foi desenvolvido pela Trybe para fazer seus alunos criarem uma aplicação com o Framework React.js. Foi necessário fazer uma solicitação externa de uma API, que nos retornará algumas prévias de músicas, página de login, página de perfil e página de músicas favoritas.
 
