@@ -16,6 +16,8 @@ This project was developed by Trybe to make theirs students to create an aplicat
 
 Doesn't exist a valid username or password, its there only for a simulation, if you put more then 3 characteres in both inputs, the button will activate and you can navegate into the website, this rule is similar to another inputs.
 
+https://trybetunesproject.vercel.app/
+
 # Olá ! Seja bem-vindo(a) para saber mais sobre o projeto TrybeTunes.
 
 ## Projeto TrybeTunes Front-End.
@@ -33,3 +35,5 @@ Este projeto foi desenvolvido pela Trybe para fazer seus alunos criarem uma apli
 ## Como usar a aplicação: 
 
 Não existe um nome de usuário ou senha válidos, é apenas para simulação, se você colocar mais de 3 caracteres em ambas as entradas, o botão será ativado e você poderá navegar no site, esta regra é semelhante a outras entradas.
+
+https://trybetunesproject.vercel.app/
