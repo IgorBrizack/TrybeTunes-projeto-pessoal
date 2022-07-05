@@ -369,3 +369,7 @@ link:hover {
   margin-top: 10px;
 }
 
+.page-not-found {
+  text-align: center;
+  color: white;
+}
